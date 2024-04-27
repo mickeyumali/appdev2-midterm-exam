@@ -15,7 +15,11 @@ class ProductAccessMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-      $validToken = env('TOKEN');
+        if ($request->isMethod('get')){
+            return $next($request);
+        }
+
+        $validToken = env('TOKEN');
 
         //Checking for token
         $token = $request->header('Authorization');
