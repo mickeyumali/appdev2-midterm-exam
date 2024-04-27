@@ -23,9 +23,9 @@ use App\Http\Middleware\ProductAccessMiddleware;
 Route::apiResource('/products', ProductController::class )->middleware(ProductAccessMiddleware::class);
 //1.1
 //1.2.1
-Route::post('products/upload/local', [ProductController::class, 'uploadImageLocal'])->name('upload.local');
+Route::post('products/upload/local', [ProductController::class, 'uploadImageLocal'])->name('upload.local')->middleware(ProductAccessMiddleware::class);
 //1.2.1
-Route::post('products/upload/public', [ProductController::class, 'uploadImagePublic'])->name('upload.public');
+Route::post('products/upload/public', [ProductController::class, 'uploadImagePublic'])->name('upload.public')->middleware(ProductAccessMiddleware::class);
 
 //2 Controllers - nasa controllers lahat
 //2.1 Generate a controller named ProductController.
